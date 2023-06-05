@@ -1,0 +1,15 @@
+<template>
+  <div class="slds-form-element">
+    <lightning-input type="search" label="Search" value={searchTerm} onchange={handleSearch}></lightning-input>
+  </div>
+
+  <template if:true={showList}>
+    <div class="slds-form-element">
+      <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid">
+        <template for:each={filteredResults} for:item="result">
+          <li key={result.Id} onclick={handleSelection} data-record-id={result.Id}>{result.Name}</li>
+        </template>
+      </ul>
+    </div>
+  </template> 
+</template>

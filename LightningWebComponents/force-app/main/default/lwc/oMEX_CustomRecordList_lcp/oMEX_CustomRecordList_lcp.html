@@ -1,0 +1,12 @@
+<template>
+    <li role="presentation" class="slds-listbox__item">
+        <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option" onclick={handleSelect}>
+            <span class="slds-media__figure slds-listbox__option-icon">
+                <lightning-icon icon-name={iconname} size="small"></lightning-icon>
+            </span>
+            <span class="slds-media__body">
+                <span class="slds-truncate" title={record.OMEX_Codigo__c}>{record.OMEX_Codigo__c}</span>
+            </span>
+        </div>
+    </li>
+</template>

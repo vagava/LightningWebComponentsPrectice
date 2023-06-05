@@ -1,0 +1,82 @@
+<template>
+    <div class="ge-custom-lookup-container">
+        <template if:false={selectedRecord}>
+                <c-o-m-e-x_-custom-search_lcp
+                    field-label="Producto"
+                    field-placeholder="PLU ó EAN"
+                    field-id={fieldId}
+                    field-value={fieldValue}
+                    onchange={handleOnchange}
+                    onblur={handleOnblur}>
+                </c-o-m-e-x_-custom-search_lcp>
+        </template>
+
+        <template if:true={error}>
+            <template if:true={error.details}>
+                <template if:true={error.details.body}>
+                    {error.details.body.message}
+                </template>
+            </template>
+        </template>
+
+        <template if:false={selectedRecord}>
+            <template if:true={haveRecords}>
+                <div class="ge-dropdown slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                        <template for:each={records} for:item="record">
+                            <c-o-m-e-x_-custom-record-list-_lcp 
+                                key={record.Id} 
+                                record={record} 
+                                onselect={handleSelect} 
+                                iconname={iconname}
+                                fieldname={searchfield}
+                            >
+                            </c-o-m-e-x_-custom-record-list-_lcp>
+                        </template>
+                        <template if:true={showSpinner}>
+                            <li role="presentation" class="slds-listbox__item">
+                                <div class="slds-align_absolute-center slds-p-top_medium">
+                                    <div role="status" class="slds-spinner slds-spinner_x-small slds-spinner_inline">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </template>
+
+        <template if:true={selectedRecord}>
+            <label class="slds-form-element__label" for="combobox-id-5">Producto</label>
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                
+                <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" title="Producto">
+                    <lightning-icon icon-name={iconname}></lightning-icon>
+                </span>
+
+                <input
+                    class="ge-record-selected slds-input slds-combobox__input slds-combobox__input-value" 
+                    autocomplete="off" 
+                    role="textbox" 
+                    type="text" 
+                    placeholder="Seleccione un producto" 
+                    readonly=""
+                    value={selectedRecord.OMEX_Codigo__c}
+                    disabled
+                ></input>
+
+                <button 
+                    class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" 
+                    title="Remueve el producto seleccionado." 
+                    onclick={handleRemove}
+                >
+                    <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Remueve el producto seleccionado.</span>
+                </button>
+            </div>
+        </template>
+    </div>
+</template>

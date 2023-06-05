@@ -1,0 +1,21 @@
+.ge-dropdown {
+    transform: none;
+    -webkit-transform: none;
+    left: 0px;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+.ge-custom-lookup-container {
+    width: 100%;
+}
+
+.ge-record-selected {
+    border: var(--lwc-borderWidthThin,1px) solid var(--sds-c-input-color-border, var(--lwc-colorBorderInput,rgb(221, 219, 218)));
+    border-radius: var(--sds-c-input-radius-border, var(--lwc-borderRadiusMedium,0.25rem));
+    background-color: var(--lwc-colorBackground,rgb(243, 242, 242));
+    color: var(--sds-c-input-text-color);
+    box-shadow: var(--sds-c-input-shadow);
+    transition: border var(--lwc-durationQuickly,0.1s) linear,background-color var(--lwc-durationQuickly,0.1s) linear;
+}
