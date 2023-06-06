@@ -4,10 +4,10 @@
   </div>
 
   <template if:true={showList}>
-    <div class="slds-form-element">
-      <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid">
+    <div class="slds-form-element slds-nav-vertical__section">
+      <ul aria-describedby="entity-header" class=" slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid">
         <template for:each={filteredResults} for:item="result">
-          <li key={result.Id} onclick={handleSelection} data-record-id={result.Id}>{result.Name}</li>
+          <li class="slds-nav-vertical__item" key={result.Id} onclick={handleSelection} data-record-id={result.Id}>{result.Name}</li>
         </template>
       </ul>
     </div>
