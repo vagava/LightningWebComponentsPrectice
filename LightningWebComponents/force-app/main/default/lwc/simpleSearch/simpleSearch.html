@@ -1,6 +1,6 @@
 <template>
   <div class="slds-form-element">
-    <lightning-input type="search" label="Search" value={searchTerm} onchange={handleSearch}></lightning-input>
+    <lightning-input type="search" label="Search" value={searchTerm} onchange={handleSearch} onblur={handleInputBlur}></lightning-input>
   </div>
 
   <template if:true={showList}>
